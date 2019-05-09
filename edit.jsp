@@ -1,10 +1,11 @@
 <html>
+<!-- FIX THIS -->
 <%@ page import="java.sql.*"%>
 <%@ include file="DriverFile.jsp"%>
 <%@ include file="header.jsp"%>
 
 <div w3-include-html="header.jsp">
-<body><h4><form action="http://localhost:8080/JSPfiles/BankApp/createpassword.jsp" onsubmit="return checkform()" method="post" style="border: thin black solid; position: absolute; top:25%; left:50%; transform:translate(-50%,-50%); padding:10;" align="left">
+<body><h4><form action="http://localhost:8080/JSPfiles/BankApp/admin.jsp" onsubmit="return checkform()" method="post" style="border: thin black solid; position: absolute; top:25%; left:50%; transform:translate(-50%,-50%); padding:10;" align="left">
 <center>
 <%
 ResultSet rs = st.executeQuery("select name, address from accounts where accno='"+request.getParameter("accno")+"'");
