@@ -1,0 +1,35 @@
+<html>
+<script>
+	function checkform(){
+		var ref1 = window.document.getElementById("p1");
+		var check = true;
+		ref1.innerHTML="";
+		if(document.getElementById("deposit").checked == false && document.getElementById("withdraw").checked == false){
+			ref1.innerHTML="Transaction type is unchosen<br>";
+			check = false;
+		}
+		if(window.document.forms[0].elements[2].value==""){
+			ref1.innerHTML+="Amount is missing";
+			check = false;
+			window.document.forms[0].elements[2].focus();
+		}
+		if(window.document.forms[0].elements[2].value<0){
+			ref1.innerHTML+="Amount is Negative";
+			check = false;
+			window.document.forms[0].elements[2].focus();
+		}
+		return check;
+}
+</script>
+<body>
+<h4>
+<form action="http://localhost:8080/JSPfiles/BankApp/interttransac.jsp" onsubmit="return checkform()" method="post" style="border: thin black solid; position: absolute; top:25%; left:50%; transform:translate(-50%,-50%); padding:10;" align="left">
+<center>
+Deposit <input type="radio" name="transactype" id="deposit" value="w">
+Withdraw <input type="radio" name="transactype" id="withdraw" value="d"><br>
+Amount <input type ="number" name="amount" style="border: thin black solid;"><br>
+<b><span id="p1" style="font-size: small;color: red"></span></b>
+<input type="submit" style="float: right">
+</form>
+</body>
+</html>

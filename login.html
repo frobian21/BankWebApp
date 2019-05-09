@@ -1,0 +1,40 @@
+<html>
+<head><title>Login</title></head>
+<script>
+	function checkform(){
+		var ref1 = window.document.getElementById("n1");
+		var ref2 = window.document.getElementById("p1");
+		var check = true;
+		if(window.document.forms[0].elements[0].value==""){
+			ref1.style.visibility="visible";
+			ref1.innerHTML="Username/Account number is missing";
+			check = false;
+		}
+		else{
+			ref1.style.visibility="hidden";
+		}
+		if(window.document.forms[0].elements[1].value==""){
+			ref2.style.visibility="visible";
+			ref2.innerHTML="Password is missing";
+			check = false;
+		}
+		else{
+			ref2.style.visibility="hidden";
+		}
+		return check;
+	}
+</script>
+<head><title>Login</title></head>
+<body>
+<h4>
+<form action="http://localhost:8080/JSPfiles/BankApp/login.jsp" onsubmit="return checkform()" method="post" style="border: thin black solid; position: absolute; top:25%; left:50%; transform:translate(-50%,-50%); padding:10">
+<center>
+Username <input type="text" name="username" style="border: thin black solid"><br><span id="n1" style="color:red; visibility:hidden;font-size:small"></span><br>
+Password <input type="Password" name="password" style="border: thin black solid"><br><span id ="p1" style="color:red; visibility:hidden;font-size:small"></span><br></center>
+<a href="createaccount.html">Create account</a>
+<input type="submit" style="float: right">
+</form>
+</h4>
+
+</body>
+</html>
