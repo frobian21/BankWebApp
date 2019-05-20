@@ -1,63 +1,39 @@
 <html>
 <script>
 	function checkform(){
-		let ref1 = window.document.getElementById("p1");
-		let ref2 = window.document.getElementById("p2");
-		let ref3 = window.document.getElementById("p3");
-		let ref4 = window.document.getElementById("p4");
+		let accountTypeError = window.document.getElementById("accountTypeError");
+		let genderError = window.document.getElementById("genderError");
 		let check = true;
-		if(window.document.forms[0].elements[1].value==""){
-			ref2.style.visibility="visible";
-			ref2.innerHTML="Address is missing";
-			check = false;
-			window.document.forms[0].elements[1].focus();
-		}
-		else{
-			ref2.style.visibility="hidden";
-		}
-		if(window.document.forms[0].elements[0].value==""){
-			ref1.style.visibility="visible";
-			ref1.innerHTML="Name is missing";
-			check = false;
-			window.document.forms[0].elements[0].focus();
-		}
-		else{
-			ref1.style.visibility="hidden";
-		}
 		if(document.getElementById("current").checked == false && document.getElementById("saving").checked == false){
-			ref3.style.visibility="visible";
-			ref3.innerHTML="Account type is unchosen";
+			accountTypeError.style.visibility="visible";
+			accountTypeError.innerHTML="Account type is unchosen";
 			check = false;
 		}
 		else{
-			ref3.style.visibility="hidden";
+			accountTypeError.style.visibility="hidden";
 		}
 		if(document.getElementById("male").checked == false && document.getElementById("female").checked == false){
-			ref4.style.visibility="visible";
-			ref4.innerHTML="Gender is unchosen";
+			genderError.style.visibility="visible";
+			genderError.innerHTML="Gender is unchosen";
 			check = false;
 		}
 		else{
-			ref4.style.visibility="hidden";
+			genderError.style.visibility="hidden";
 		}
 		return check;
 	}
 </script>
 <body>
 <h4>
-<form action="http://localhost:8080/JSPfiles/BankApp/createpassword.jsp" onsubmit="return checkform()" method="post" style="border: thin black solid; position: absolute; top:10%; left:50%; transform:translate(-50%,-50%); padding:10;background-color: lightblue" align="left">
-<center>
-Name <input required name="name" style="border: thin black solid; background-color: aqua">
-<span id="p1" style="color:red; visibility:hidden;font-size:small"></span><br>
-Address <input required name="address" style="border: thin black solid; background-color: aqua">
-<span id="p2" style="color:red; visibility:hidden;font-size:small"></span><br></center>
-Current <input type="radio" name="accounttype" id="current" value="c"> Savings <input type="radio" name="accounttype" id="saving" value="s">
-<span id="p3" style="color:red; visibility:hidden;font-size:small;float:right"></span><br>
+<form action="http://localhost:8080/JSPfiles/BankApp/createpassword.jsp" onsubmit="return checkform()" method="post" style="border: thin black solid; position: absolute; top:10%; left:50%; transform:translate(-50%,-50%); padding:10;background-color: lightblue; min-width: 250" align="left">
+Name <input required name="name" style="border: thin black solid; background-color: aqua;position:absolute;right:10;"><br>
+Address <input required name="address" style="border: thin black solid; background-color: aqua;position:absolute;right:10;"><br>
+Current <input type="radio" name="accountType" id="current" value="c"> Savings <input type="radio" name="accountType" id="saving" value="s">
+<span id="accountTypeError" style="color:red; visibility:hidden;font-size:small;float:right"></span><br>
 Male <input type="radio" name="gender" id="male" value="m"> Female <input type="radio" name="gender" id="female" value="f">
-<span id="p4" style="color:red; visibility:hidden;font-size:small;float:right"></span><br>
+<span id="genderError" style="color:red; visibility:hidden;font-size:small;float:right"></span><br>
 <input type="submit" value="Create account" style="float: right; border: thin black solid; background-color: aqua">
 </form>
 </h4>
-
 </body>
 </html>
