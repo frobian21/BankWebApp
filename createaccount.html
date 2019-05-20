@@ -1,11 +1,11 @@
 <html>
 <script>
 	function checkform(){
-		var ref1 = window.document.getElementById("p1");
-		var ref2 = window.document.getElementById("p2");
-		var ref3 = window.document.getElementById("p3");
-		var ref4 = window.document.getElementById("p4");
-		var check = true;
+		let ref1 = window.document.getElementById("p1");
+		let ref2 = window.document.getElementById("p2");
+		let ref3 = window.document.getElementById("p3");
+		let ref4 = window.document.getElementById("p4");
+		let check = true;
 		if(window.document.forms[0].elements[1].value==""){
 			ref2.style.visibility="visible";
 			ref2.innerHTML="Address is missing";
@@ -45,17 +45,17 @@
 </script>
 <body>
 <h4>
-<form action="http://localhost:8080/JSPfiles/BankApp/createpassword.jsp" onsubmit="return checkform()" method="post" style="border: thin black solid; position: absolute; top:25%; left:50%; transform:translate(-50%,-50%); padding:10;" align="left">
+<form action="http://localhost:8080/JSPfiles/BankApp/createpassword.jsp" onsubmit="return checkform()" method="post" style="border: thin black solid; position: absolute; top:10%; left:50%; transform:translate(-50%,-50%); padding:10;background-color: lightblue" align="left">
 <center>
-Name <input name="name" style="border: thin black solid;">
+Name <input required name="name" style="border: thin black solid; background-color: aqua">
 <span id="p1" style="color:red; visibility:hidden;font-size:small"></span><br>
-Address <input name="address" style="border: thin black solid">
+Address <input required name="address" style="border: thin black solid; background-color: aqua">
 <span id="p2" style="color:red; visibility:hidden;font-size:small"></span><br></center>
 Current <input type="radio" name="accounttype" id="current" value="c"> Savings <input type="radio" name="accounttype" id="saving" value="s">
 <span id="p3" style="color:red; visibility:hidden;font-size:small;float:right"></span><br>
 Male <input type="radio" name="gender" id="male" value="m"> Female <input type="radio" name="gender" id="female" value="f">
 <span id="p4" style="color:red; visibility:hidden;font-size:small;float:right"></span><br>
-<input type="submit" value="Create account" style="float: right">
+<input type="submit" value="Create account" style="float: right; border: thin black solid; background-color: aqua">
 </form>
 </h4>
 

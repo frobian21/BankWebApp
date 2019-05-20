@@ -5,7 +5,7 @@
 	<title>Home</title>
 </head>
 <body>
-	<div style="border: thin black solid; position: absolute; top:25%; left:50%; transform: translate(-50%,-50%);padding: 10">
+	<div style="border: thin black solid; position: absolute; top:25%; left:50%; transform: translate(-50%,-50%); padding: 10; background-color: lightblue">
 	<%
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -18,7 +18,7 @@
 					response.sendRedirect("admin.jsp");
 				}else{
 					if(rs.getInt(4)==0){
-						out.println("You are dead.<br>Please see admin.");
+						out.println("<center>You are <b><u>dead</b></u>.<br>Your account has been blocked.<br>Please see admin.<br><a href='index.html'>Home</a>");
 					}else{
 						ResultSet rs2=st.executeQuery("select * from accounts where accno = '" + username + "'");
 						rs2.next();
@@ -30,7 +30,7 @@
 					}
 				}
 			}else{
-				out.println("You do not exist.<br> <center><a href='login.html'>Sign-in</a>");
+				out.println("You do not exist.<br> <center><a href='login.html' style=\"border:thin black solid\">Sign-in</a>");
 			}
 		} catch (Exception E) {
 			out.println(E.toString());

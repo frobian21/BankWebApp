@@ -3,21 +3,23 @@
 <%@ include file="DriverFile.jsp"%>
 <script>
 	function checkform(){
-		var ref1 = window.document.getElementById("p1");
-		var check = true;
+		let ref1 = window.document.getElementById("p1");
 		if(window.document.forms[0].elements[1].value==""||window.document.forms[0].elements[0].value==""){
 			ref1.style.visibility="visible";
 			ref1.innerHTML="password is missing";
-			check = false;
 			window.document.forms[0].elements[1].focus();
+			return false;
 		}
 		else{
 			ref1.style.visibility="hidden";
 		}
-		if(!window.document.forms[0].elements[0].value.equals(window.document.forms[0].elements[1].value)){
-			check = false;
+		if(window.document.forms[0].elements[0].value!==(window.document.forms[0].elements[1].value)){
+			ref1.style.visibility="visible";
 			ref1.innerHTML="passwords must match";
+			window.document.forms[0].elements[1].focus();
+			return false;
 		}
+		return true;
 	}
 </script>
 <head>
@@ -38,15 +40,14 @@
 			session.setAttribute("username",acctype + gender + myString);
 			session.setAttribute("name",name);
 			session.setAttribute("address",address);
-			out.println("<form action=\"http://localhost:8080/JSPfiles/BankApp/createaccount.jsp\" onsubmit=\"return checkform()\" method=\"post\" style=\"border: thin black solid; position: absolute; top:25%; left:50%; transform:translate(-50%,-50%); padding:10;\" align=\"right\">");
-			out.println("Password <input type=\"Password\" name=\"password\" style=\"border: thin black solid\"><br>");
-			out.println("Re-write password <input type=\"Password\" name=\"password\" style=\"border: thin black solid\"><br><span id =\"p1\" style=\"color:red; visibility:hidden;font-size:small\"></span><br>");
-			out.println("<input type=\"submit\" style=\"float: right\"></form></h4></div>");
-
-
-				
+			session.setAttribute("role",1);
 		} catch (Exception E) {
 			out.println(E.toString());
 		}
-	%></body>
+	%>
+	<form action="http://localhost:8080/JSPfiles/BankApp/createaccount.jsp" onsubmit="return checkform()" method="post" style="border: thin black solid; position: absolute; top:10%; left:50%; transform:translate(-50%,-50%); padding:10; min-width: 315px; background-color: lightblue" align="right">
+	Password <input type="Password" name="password" style="border: thin black solid; background-color: aqua"><br>
+	Re-write password <input type="Password" name="password" style="border: thin black solid; background-color: aqua"><br><span id ="p1" style="color:red; visibility:hidden;font-size:small"></span>
+	<input type="submit" style="float: right; border: thin black solid; background-color: aqua"></form></h4>
+	</body>
 </html>

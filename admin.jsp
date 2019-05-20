@@ -3,7 +3,8 @@
 <%@ include file="DriverFile.jsp"%>
 <%@ include file="header.jsp"%>
 
-<div w3-include-html="header.jsp">
+<div w3-include-html="header.jsp"></div>
+<div style="border: thin black solid; position: absolute; top:15%; left:50%; transform: translate(-50%,-50%);padding:10; overflow:auto; height:200px;background-color: lightblue"><div style=" background-color: aqua">
 <%
 	if((Integer) session.getAttribute("role")==2){
 	String active ="error";
@@ -12,7 +13,7 @@
 	int sno=1;
 	try{
 		ResultSet rs = st.executeQuery("select * from accounts");
-		out.println("<table border='1'><tr><td>s.no</td><td>accno</td><td>name</td><td>operations</td></tr>");
+		out.println("<table border='1'><tr><td><b>s.no</td><td><b>accno</td><td><b>name</td><td><b>operations</td></tr>");
 	while(rs.next()){
 		out.println("<tr><td>"+(sno++)+"</td>");
 		out.println("<td><a href='http://localhost:8080/JSPfiles/BankApp/home.jsp?accno="+rs.getString(1)+"'>"+rs.getString(1)+"</a></td>");
@@ -32,4 +33,5 @@
 
 }else out.println("You do not have the permission to be here");
 %>
+</div>
 </html>

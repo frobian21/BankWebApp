@@ -13,5 +13,5 @@
 	} catch (Exception E) {
 		out.println(E.toString());
 	}
-	response.sendRedirect("home.jsp");
+	response.sendRedirect("home.jsp?accno="+accno);
 %>
